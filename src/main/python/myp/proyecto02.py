@@ -1,44 +1,32 @@
 import sys
+from argumentos import *
+from ocultar import *
+from develar import *
 
+def uso():
+    print("Uso: python3 [-h <txt> <img> <img_resultante>] | [-u <img> <txt_resultante>]")
+    sys.exit()
 
-def bandera_h(arreglo_entrada):
-    if "-h" in sys.argv:
-        return True
+entrada = sys.argv
+h = bandera_h(entrada)
+u = bandera_u(entrada)
+
+if h == u:
+    uso()
+elif h:
+    nombre_txt = nombre_archivo_texto(entrada)
+    nombre_img_original = nombre_imagen_para_ocultar(entrada)
+    nombre_img_resultante = nombre_imagen_resultante(entrada)
+    if nombre_txt == "" or nombre_img_original == "" or nombre_img_resultante == "":
+        uso()
     else:
-        return False
-
-def bandera_u(arreglo_entrada):
-    if "-u" in sys.argv:
-        return True
+        print("Oculta texto en la imagen y la guarda")
+elif u:
+    nombre_img = nombre_imagen_para_develar(entrada)
+    nombre_txt_resultante = nombre_texto_resultante(entrada)
+    if nombre_img == "" or nombre_txt_resultante == "":
+        uso()
     else:
-        return False
+        print("Devela texto de la imagen y lo guarda")
 
-def nombre_archivo_texto(arreglo_entrada):
-    if len(arreglo_entrada) == 5 and bandera_h(arreglo_entrada):
-        return sys.argv[2]
-    else:
-        return ""
 
-def nombre_imagen_para_ocultar(arreglo_entrada):
-    if len(arreglo_entrada) == 5 and bandera_h(arreglo_entrada):
-        return sys.argv[3]
-    else:
-        return ""
-
-def nombre_imagen_resultante(arreglo_entrada):
-    if len(arreglo_entrada) == 5 and bandera_h(arreglo_entrada):
-        return sys.argv[4]
-    else:
-        return ""
-
-def nombre_imagen_para_develar(arreglo_entrada):
-    if len(arreglo_entrada) == 4 and bandera_u(arreglo_entrada):
-        return sys.argv[1]
-    else:
-        return ""
-
-def nombre_texto_resultante(arreglo_entrada):
-    if len(arreglo_entrada) == 4 and bandera_u(arreglo_entrada):
-        return sys.argv[2]
-    else:
-        return ""
