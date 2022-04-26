@@ -1,5 +1,6 @@
 import numpy as np
 from PIL import Image
+import os
 
 def codificar(direccion_imagen, direccion_mensaje, resultado):
 
@@ -7,6 +8,7 @@ def codificar(direccion_imagen, direccion_mensaje, resultado):
     ancho, alto = imagen.size
     imagen_arreglo = np.array(list(img.getdata()))
     direccion_imagen = resultado
+    archivo =  open(direccion_mensaje,'w')
 
     if imagen.mode == 'RGB':
         n = 3
@@ -29,4 +31,7 @@ def codificar(direccion_imagen, direccion_mensaje, resultado):
             break
         else:
             mensaje += chr(int(bits_ocultos[i],2))
-    if "ne$dWG" in mensaje: 
+    if "ne$dWG" in mensaje:
+        archivo.write(mensaje[:-6])
+    else:
+        print("No se ha encontrado ningun mensaje")

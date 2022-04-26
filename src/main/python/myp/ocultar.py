@@ -1,12 +1,12 @@
 import numpy as np
 from PIL import Image
 
-def codificar(direccion_imagen, mensaje, resultado):
+def codificar(direccion_imagen, direccion_mensaje, resultado):
 
     imagen = Image.open(direccion_imagen, 'r')
     ancho, alto = imagen.size
     imagen_arreglo = np.array(list(img.getdata()))
-    direccion_imagen = resultado
+    mensaje = open(direccion_mensaje, 'r').read()
 
     if imagen.mode == 'RGB':
         n = 3
