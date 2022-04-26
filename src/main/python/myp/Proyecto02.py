@@ -1,10 +1,5 @@
 import sys
 
-def numero_argumentos_validos(arreglo_entrada):
-    if len(arreglo_entrada) == 4 | len(arreglo_entrada) == 5:
-        return True
-    else:
-        return False
 
 def bandera_h(arreglo_entrada):
     if "-h" in sys.argv:
@@ -18,6 +13,32 @@ def bandera_u(arreglo_entrada):
     else:
         return False
 
+def nombre_archivo_texto(arreglo_entrada):
+    if len(arreglo_entrada) == 5 and bandera_h(arreglo_entrada):
+        return sys.argv[2]
+    else:
+        return ""
 
-print(numero_argumentos_validos(sys.argv))
-print(len(sys.argv))
+def nombre_imagen_para_ocultar(arreglo_entrada):
+    if len(arreglo_entrada) == 5 and bandera_h(arreglo_entrada):
+        return sys.argv[3]
+    else:
+        return ""
+
+def nombre_imagen_resultante(arreglo_entrada):
+    if len(arreglo_entrada) == 5 and bandera_h(arreglo_entrada):
+        return sys.argv[4]
+    else:
+        return ""
+
+def nombre_imagen_para_develar(arreglo_entrada):
+    if len(arreglo_entrada) == 4 and bandera_u(arreglo_entrada):
+        return sys.argv[1]
+    else:
+        return ""
+
+def nombre_texto_resultante(arreglo_entrada):
+    if len(arreglo_entrada) == 4 and bandera_u(arreglo_entrada):
+        return sys.argv[2]
+    else:
+        return ""
