@@ -1,4 +1,5 @@
 import sys
+import pathlib
 from argumentos import *
 from ocultar import *
 from develar import *
@@ -14,19 +15,21 @@ u = bandera_u(entrada)
 if h == u:
     uso()
 elif h:
-    nombre_txt = nombre_archivo_texto(entrada)
-    nombre_img_original = nombre_imagen_para_ocultar(entrada)
+    nombre_txt = pathlib.Path(__file__).absolute().parent / nombre_archivo_texto(entrada)
+    nombre_img_original = pathlib.Path(__file__).absolute().parent / nombre_imagen_para_ocultar(entrada)
     nombre_img_resultante = nombre_imagen_resultante(entrada)
     if nombre_txt == "" or nombre_img_original == "" or nombre_img_resultante == "":
         uso()
     else:
-        print("Oculta texto en la imagen y la guarda")
+        ocultar(nombre_img_original, nombre_txt, nombre_img_resultante)
 elif u:
-    nombre_img = nombre_imagen_para_develar(entrada)
+    nombre_img = pathlib.Path(__file__).absolute().parent / nombre_imagen_para_develar(entrada)
     nombre_txt_resultante = nombre_texto_resultante(entrada)
     if nombre_img == "" or nombre_txt_resultante == "":
         uso()
     else:
-        print("Devela texto de la imagen y lo guarda")
+        develar(nombre_img, nombre_txt_resultante)
 
-
+#print(pathlib.Path(__file__).absolute().parent / nombre_imagen_para_ocultar(sys.argv))
+#print(pathlib.Path(__file__).absolute().parent / nombre_imagen_resultante(sys.argv))
+#print(pathlib.Path(__file__).absolute().parent / sys.argv[1])
