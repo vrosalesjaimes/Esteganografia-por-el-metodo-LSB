@@ -1,4 +1,3 @@
-
 # Convierte en binario de 8 bits
 # usando el codigo ascii asociado.
 def convierte_en_binario(mensaje):
@@ -9,7 +8,7 @@ def convierte_en_binario(mensaje):
     
     return lista_binario
 
-def trios_pixeles(iterador):
+def valores_pixel(iterador):
     pixeles = [valor for valor in
                      iterador.__next__()[:3] +
                      iterador.__next__()[:3] +
@@ -23,7 +22,7 @@ def modifica_pixeles(pixeles_imagen, mensaje):
     iterador_pixeles = iter(pixeles_imagen)
 
     for i in range(longitud_mensaje_binario):
-        pixeles = trios_pixeles(iterador_pixeles)
+        pixeles = valores_pixel(iterador_pixeles)
 
         for j in range(0,8):
             if(mensaje_en_binario[i][j] == '0' and pixeles[j] % 2 != 0):
