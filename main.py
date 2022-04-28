@@ -1,11 +1,13 @@
+# main.py
+
 import sys
 import pathlib
-from argumentos import *
-from ocultar import *
-from develar import *
+from src.argumentos import *
+from src.ocultar import *
+from src.develar import *
 
 def uso():
-    print("Uso: python3 [-h <txt> <img> <img_resultante>] | [-u <img> <txt_resultante>]")
+    print("Uso: python3 [-h <txt> <img> <nombre_para_img_resultante>] | [-u <img> <nombre_para_txt_resultante>]")
     sys.exit()
 
 entrada = sys.argv
@@ -29,7 +31,3 @@ elif u:
         uso()
     else:
         develar(nombre_img, nombre_txt_resultante)
-
-#print(pathlib.Path(__file__).absolute().parent / nombre_imagen_para_ocultar(sys.argv))
-#print(pathlib.Path(__file__).absolute().parent / nombre_imagen_resultante(sys.argv))
-#print(pathlib.Path(__file__).absolute().parent / sys.argv[1])

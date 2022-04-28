@@ -1,3 +1,5 @@
+# argumentos.py
+
 def bandera_h(arreglo_entrada):
     if "-h" in arreglo_entrada:
         return True
