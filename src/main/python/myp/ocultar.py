@@ -1,34 +1,20 @@
-import numpy as np
-from PIL import Image
+from PIL import Image 
+import procesa_datos
 
-def codificar(direccion_imagen, direccion_mensaje, resultado):
+def ocultar(ruta_imagen, archivo, ruta_imagen_cifrada):
+    imagen = Image.open(ruta_imagen, 'r')
+    mensaje = open(archivo).read()
 
-    imagen = Image.open(direccion_imagen, 'r')
-    ancho, alto = imagen.size
-    imagen_arreglo = np.array(list(img.getdata()))
-    mensaje = open(direccion_mensaje, 'r').read()
+    img_copia = imagen.copy()
+    a = img_copia.size[0]
+    (x,y) = (0,0)
 
-    if imagen.mode == 'RGB':
-        n = 3
-    elif imagen.mode == 'RGBA':
-        n = 4
-        
-    pixeles_totales_imagen = array.size//n
+    for pixel in procesa_datos.modifica_pixeles(img_copia.getdata(), mensaje):
+        img_copia.putpixel((x,y), pixel)
+        if(x+1 == a):
+            x = 0
+            y += 1
+        else:
+            x += 1
 
-    mensaje =+ "ne$dWG"
-    mensaje_binario = ''.join([format(ord(i), "08b") for i in message])
-    pixeles_minimos_imagen = len(mensaje_binario)
-
-    if pixeles_minimos_imagen > pixeles_totales_imagen :
-        print("ERROR: Se necesita un archivo de mayor tamaño")
-    else :
-        indice = 0 
-        for i in range(pixeles_totales_imagen):
-            for j in range(0,3):
-                if indice < pixeles_minimos_imagen:
-                    imagen_arreglo[i][j] = int(bin(imagen_arreglo[i][j])[2:9] + mensaje_binario[indice],2)
-                    indice += 1
-
-        imagen_arreglo = imagen_arreglo.reshape(alto, ancho, n)
-        imagen_nueva = Image.fromarray(array.astype('uint8'), imagen.mode)
-        imagen_nueva.save(resultado)
+    img_copia.save(ruta_imagen_cifrada)
