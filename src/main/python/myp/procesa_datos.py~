@@ -1,0 +1,19 @@
+
+# Convierte en binario de 8 bits
+# usando el codigo ascii asociado.
+def convierte_en_binario(mensaje):
+    lista_binario = []
+    
+    for i in mensaje:
+        lista_binario.append(format(ord(i), '08b'))
+    
+    return lista_binario
+
+
+# Modificación de pixeles
+def modifica_pixeles(pixeles_imagen, mensaje):  
+    mensaje_en_binario =  convierte_en_binario(mensaje)
+    longitud_mensaje_binario = len(mensaje_en_binario)
+    iterador_pixeles = iter(pixeles_imagen)
+    
+    

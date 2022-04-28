@@ -20,6 +20,7 @@ elif h:
     if nombre_txt == "" or nombre_img_original == "" or nombre_img_resultante == "":
         uso()
     else:
+        ocultar(nombre_img_original, nombre_txt, nombre_img_resultante)
         print("Oculta texto en la imagen y la guarda")
 elif u:
     nombre_img = nombre_imagen_para_develar(entrada)
@@ -27,6 +28,7 @@ elif u:
     if nombre_img == "" or nombre_txt_resultante == "":
         uso()
     else:
+        develar(nombre_img, nombre_txt_resultante)
         print("Devela texto de la imagen y lo guarda")
 
 
