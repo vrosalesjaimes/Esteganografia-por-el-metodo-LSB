@@ -10,7 +10,7 @@ from src.develar import *
 def diferente_extension(nombre_original, nombre_resultante):
     arreglo_ruta_1 = os.path.split(nombre_original)
     arreglo_ruta_2 = os.path.split(nombre_resultante)
-    if arreglo_ruta_1[1] == arreglo_ruta_2[1]:
+    if arreglo_ruta_1[1].split(".")[1] == arreglo_ruta_2[1].split(".")[1]:
         return False
     else:
         return True
@@ -30,6 +30,7 @@ elif h:
     nombre_img_original = pathlib.Path(__file__).absolute().parent / nombre_imagen_para_ocultar(entrada)
     nombre_img_resultante = nombre_imagen_resultante(entrada)
     if nombre_txt == "" or nombre_img_original == "" or nombre_img_resultante == "" or diferente_extension(nombre_img_original, nombre_img_resultante):
+        print(diferente_extension(nombre_img_original, nombre_img_resultante))
         uso()
     else:
         ocultar(nombre_img_original, nombre_txt, nombre_img_resultante)

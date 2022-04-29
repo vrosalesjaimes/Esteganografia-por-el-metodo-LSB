@@ -12,6 +12,7 @@ def develar(ruta_imagen, archivo):
         imagen = Image.open(ruta_imagen, 'r')
     except FileNotFoundError:
         print("Ha ocurido un error al intentar leer los archivos")
+        raise
 
     mensaje = ""
     iterador_imagen = iter(imagen.getdata())
@@ -28,10 +29,6 @@ def develar(ruta_imagen, archivo):
                 mensaje_binario += '1'
 
         mensaje += chr(int(mensaje_binario, 2))
-
-        if(len(mensaje) == 0):
-            print("El menasje es vacío")
-            return 
 
         if ("@%#=" in mensaje):
             file = open(archivo, "w")

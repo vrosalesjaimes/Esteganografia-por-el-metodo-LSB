@@ -13,7 +13,8 @@ def ocultar(ruta_imagen, archivo, ruta_imagen_cifrada):
         mensaje = open(archivo).read() + "@%#="
     except FileNotFoundError:
         print("Ha ocurrido un error al intentar leer los archivos")
-        
+        raise
+
     a = imagen.size[0]
     (x,y) = (0,0)
 

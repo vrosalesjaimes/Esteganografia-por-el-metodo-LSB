@@ -15,8 +15,8 @@ Una vez posicionado en la carpeta principal del proyecto, para ejecutar tenemos 
 #### Para ocultar un mensaje ejecutamos en terminal:
 > $ python3   main.py   -h   archivo_del_mesaje   nombre_imagen   nombre_img_resultante_incluir_misma_extension
 
-#### Para extraer un mensaje en terminal: 
+#### Para extraer un mensaje en terminal:
 > $ python3   main.py   -u   nombre_imagen   nombre_archivo_resultante
 
 Para ejecutar las pruebas unitarias ejecutamos en terminal:
-> $ python3 -m unittest -v 
+> $ python3 -m unittest -v
