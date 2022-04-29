@@ -29,6 +29,10 @@ def develar(ruta_imagen, archivo):
 
         mensaje += chr(int(mensaje_binario, 2))
 
+        if(len(mensaje) == 0):
+            print("El menasje es vacío")
+            return 
+
         if ("@%#=" in mensaje):
             file = open(archivo, "w")
             file.write(mensaje[:-4])
