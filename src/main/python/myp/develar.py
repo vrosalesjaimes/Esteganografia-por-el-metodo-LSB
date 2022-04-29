@@ -2,12 +2,16 @@ from PIL import Image
 import procesa_datos
 
 def develar(ruta_imagen, archivo):
-    imagen = Image.open(ruta_imagen, 'r')
+    try:
+        imagen = Image.open(ruta_imagen, 'r')
+    except FileNotFoundError:
+        print("Ha ocurido un error al intentar leer los archivos")
+        
     mensaje = ""
     iterador_imagen = iter(imagen.getdata())
     
     while(True):
-        pixeles = procesa_datos.trios_pixeles(iterador_imagen)
+        pixeles = procesa_datos.valores_pixel(iterador_imagen)
         
         mensaje_binario = ""
         
@@ -19,8 +23,8 @@ def develar(ruta_imagen, archivo):
         
         mensaje += chr(int(mensaje_binario, 2))
         
-        if (pixeles[-1] % 2 != 0):
+        if ("@%#=" in mensaje):
             file = open(archivo, "w")
-            file.write(mensaje)
+            file.write(mensaje[:-4])
             file.close()
             return
