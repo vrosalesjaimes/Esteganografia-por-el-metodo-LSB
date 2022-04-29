@@ -24,6 +24,7 @@ elif h:
         uso()
     else:
         ocultar(nombre_img_original, nombre_txt, nombre_img_resultante)
+        print("Texto ocultado en la imagen")
 elif u:
     nombre_img = pathlib.Path(__file__).absolute().parent / nombre_imagen_para_develar(entrada)
     nombre_txt_resultante = nombre_texto_resultante(entrada)
@@ -31,3 +32,4 @@ elif u:
         uso()
     else:
         develar(nombre_img, nombre_txt_resultante)
+        print("Texto develado de la imagen")
