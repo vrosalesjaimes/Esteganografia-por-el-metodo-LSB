@@ -18,5 +18,5 @@ Una vez posicionado en la carpeta principal del proyecto, para ejecutar tenemos 
 #### Para extraer un mensaje en terminal: 
 > $ python3   main.py   -u   nombre_imagen   nombre_archivo_resultante
 
-Para ejecutar lar pruebas unitarias ejecutamos en terminal:
+Para ejecutar las pruebas unitarias ejecutamos en terminal:
 > $ python3 -m unittest -v 
