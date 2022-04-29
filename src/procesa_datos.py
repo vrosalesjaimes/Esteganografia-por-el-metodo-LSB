@@ -36,16 +36,6 @@ def modifica_pixeles(pixeles_imagen, mensaje):
                 else:
                     pixeles[j] += 1
 
-        if(i == longitud_mensaje_binario -1 ):
-            if(pixeles[-1] % 2 == 0):
-                if(pixeles[-1] != 0):
-                    pixeles[-1] -= 1
-                else:
-                    pixeles[-1] += 1
-        else:
-            if(pixeles[-1] % 2 != 0):
-                pixeles[-1] -= 1
-
         pixeles = tuple(pixeles)
         yield pixeles[0:3]
         yield pixeles[3:6]
