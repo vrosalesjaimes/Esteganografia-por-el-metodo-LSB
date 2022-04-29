@@ -1,7 +1,11 @@
 # develar.py
 
-from PIL import Image
 from src.procesa_datos import *
+try:
+    from PIL import Image
+except ImportError:
+    import os
+    os.system('pip install pillow')
 
 def develar(ruta_imagen, archivo):
     try:

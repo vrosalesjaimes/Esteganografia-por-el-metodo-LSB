@@ -1,7 +1,11 @@
 # ocultar.py
 
-from PIL import Image
 from src.procesa_datos import *
+try:
+    from PIL import Image
+except ImportError:
+    import os
+    os.system('pip install pillow')
 
 def ocultar(ruta_imagen, archivo, ruta_imagen_cifrada):
     try:
