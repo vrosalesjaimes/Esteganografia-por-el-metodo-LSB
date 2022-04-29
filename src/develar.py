@@ -1,7 +1,7 @@
 # develar.py
 
 from PIL import Image
-import procesa_datos
+from src.procesa_datos import *
 
 def develar(ruta_imagen, archivo):
     try:
@@ -13,7 +13,7 @@ def develar(ruta_imagen, archivo):
     iterador_imagen = iter(imagen.getdata())
 
     while(True):
-        pixeles = procesa_datos.valores_pixel(iterador_imagen)
+        pixeles = valores_pixel(iterador_imagen)
 
         mensaje_binario = ""
 
